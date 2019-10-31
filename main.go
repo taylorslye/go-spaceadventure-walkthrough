@@ -4,15 +4,14 @@ import "fmt"
 
 func main() {
 	printWelcome()
-
 	printGreeting(getName())
 	fmt.Println("Let's go on an adventure!")
 	travel()
 }
 
 func printWelcome() {
-	fmt.Println("Welcome to the Solar System!")
-	fmt.Println("There are 8 planets to explore.")
+	fmt.Println("Welcome to the Solar System! \n There are 8 planets to explore.")
+
 }
 
 func getName() string{
@@ -33,7 +32,7 @@ func travel() {
 		if choice == "Y" {
 			travelToRandomPlanet()
 		} else if choice == "N" {
-			planetName := getPlanetName()
+			planetName := getPlanetName(
 			travelToPlanet(planetName)
 		} else {
 			fmt.Println("Sorry, I didn't get that.")

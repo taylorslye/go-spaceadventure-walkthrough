@@ -1,24 +1,15 @@
 package main
-
 import "fmt"
-
 func main() {
 	printWelcome()
-	printGreeting(getName())
+	printGreeting(getResponseToPrompt())
 	fmt.Println("Let's go on an adventure!")
 	travel()
 }
 
 func printWelcome() {
-	fmt.Println("Welcome to the Solar System! \n There are 8 planets to explore.")
+	fmt.Println("Welcome to the Solar System! \n There are 8 planets to explore. \n What is your name?")
 
-}
-
-func getName() string{
-	var name string
-	fmt.Println("What is your name?")
-    fmt.Scan(&name)
-    return name
 }
 
 func printGreeting(name string) {
@@ -27,12 +18,14 @@ func printGreeting(name string) {
 
 func travel() {
 	var choice string
+	fmt.Println("Shall I randomly choose a planet for you to visit? (Y or N)")
 	for choice != "Y" && choice != "N" {
-		choice = getTravelChoice()
+		choice = getResponseToPrompt()
 		if choice == "Y" {
 			travelToRandomPlanet()
 		} else if choice == "N" {
-			planetName := getPlanetName(
+			fmt.Println("Name the planet you would like to visit.")
+			planetName := getResponseToPrompt()
 			travelToPlanet(planetName)
 		} else {
 			fmt.Println("Sorry, I didn't get that.")
@@ -40,24 +33,18 @@ func travel() {
 	}
 }
 
-func getTravelChoice() string {
-	var choice string
-	fmt.Println("Shall I randomly choose a planet for you to visit? (Y or N)")
-	fmt.Scan(&choice)
-	return choice
+func getResponseToPrompt() string {
+	var response string	
+	fmt.Scan(&response)
+	return response
 }
+
 
 func travelToRandomPlanet() {
 	fmt.Println("Traveling to Jupiter...")
 	fmt.Println("Arrived at Jupiter. The large red spot appears ominous.")
 }
 
-func getPlanetName() string {
-	var name string
-	fmt.Println("Name the planet you would like to visit.")
-	fmt.Scan(&name)
-	return name
-}
 
 func travelToPlanet(planetName string) {
 	fmt.Printf("Traveling to %s...\n", planetName)

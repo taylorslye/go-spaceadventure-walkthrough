@@ -23,9 +23,11 @@ func promptForRandomOrSpecificDestination() {
 	for choice != "Y" && choice != "N" {
 		choice = getResponseToPrompt()
 		if choice == "Y" {
-			travelToRandomPlanet()
+			travel()
 		} else if choice == "N" {
-			travelToPlanet()
+			fmt.Println("Name the planet you would like to visit.")
+			planetName := getResponseToPrompt()
+			travel(planetName)
 		} else {
 			fmt.Println("Sorry, I didn't get that.")
 		}
@@ -38,16 +40,14 @@ func getResponseToPrompt() string {
 	return response
 }
 
+func travel(location ...string) {
+	if len(location) == 1 {
+		
+		fmt.Printf("Traveling to %s...\n", location[0])
+		fmt.Printf("Arrived at %s. A very cold planet, furthest from the sun.", location[0])
+	} else {
+		fmt.Println("Traveling to Jupiter...")
+		fmt.Println("Arrived at Jupiter. The large red spot appears ominous.")
+	}
 
-func travelToRandomPlanet() {
-	fmt.Println("Traveling to Jupiter...")
-	fmt.Println("Arrived at Jupiter. The large red spot appears ominous.")
-}
-
-
-func travelToPlanet() {
-	fmt.Println("Name the planet you would like to visit.")
-	planetName := getResponseToPrompt()
-	fmt.Printf("Traveling to %s...\n", planetName)
-	fmt.Println("Arrived at Neptune. A very cold planet, furthest from the sun.")
 }

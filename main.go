@@ -33,6 +33,22 @@ func travel() {
 	}
 }
 
+
+func promptForRandomOrSpecificDestination() {
+	var choice string
+	fmt.Println("Shall I randomly choose a planet for you to visit? (Y or N)")
+	for choice != "Y" && choice != "N" {
+		choice = getResponseToPrompt()
+		if choice == "Y" {
+			travelToRandomPlanet()
+		} else if choice == "N" {
+			travelToPlanet()
+		} else {
+			fmt.Println("Sorry, I didn't get that.")
+		}
+	}
+
+}
 func getResponseToPrompt() string {
 	var response string	
 	fmt.Scan(&response)
@@ -46,7 +62,9 @@ func travelToRandomPlanet() {
 }
 
 
-func travelToPlanet(planetName string) {
+func travelToPlanet() {
+	fmt.Println("Name the planet you would like to visit.")
+	planetName := getResponseToPrompt()
 	fmt.Printf("Traveling to %s...\n", planetName)
 	fmt.Println("Arrived at Neptune. A very cold planet, furthest from the sun.")
 }
